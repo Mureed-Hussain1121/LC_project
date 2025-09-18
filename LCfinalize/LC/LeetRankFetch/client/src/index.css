@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0 0% 6%);
+  --foreground: hsl(0 0% 91%);
+  --card: hsl(0 0% 15%);
+  --card-foreground: hsl(0 0% 91%);
+  --popover: hsl(0 0% 15%);
+  --popover-foreground: hsl(0 0% 91%);
+  --primary: hsl(36 100% 54%);
+  --primary-foreground: hsl(0 0% 0%);
+  --secondary: hsl(0 0% 20%);
+  --secondary-foreground: hsl(0 0% 91%);
+  --muted: hsl(0 0% 25%);
+  --muted-foreground: hsl(0 0% 63%);
+  --accent: hsl(36 100% 54%);
+  --accent-foreground: hsl(0 0% 0%);
+  --destructive: hsl(356.3033 90.5579% 54.3137%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --border: hsl(0 0% 25%);
+  --input: hsl(0 0% 25%);
+  --ring: hsl(36 100% 54%);
+  --chart-1: hsl(36 100% 54%);
+  --chart-2: hsl(159.7826 100% 36.0784%);
+  --chart-3: hsl(42.0290 92.8251% 56.2745%);
+  --chart-4: hsl(147.1429 78.5047% 41.9608%);
+  --chart-5: hsl(341.4894 75.2000% 50.9804%);
+  --sidebar: hsl(0 0% 15%);
+  --sidebar-foreground: hsl(0 0% 91%);
+  --sidebar-primary: hsl(36 100% 54%);
+  --sidebar-primary-foreground: hsl(0 0% 0%);
+  --sidebar-accent: hsl(0 0% 20%);
+  --sidebar-accent-foreground: hsl(36 100% 54%);
+  --sidebar-border: hsl(0 0% 25%);
+  --sidebar-ring: hsl(36 100% 54%);
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius: 8px;
+  
+  --easy: hsl(163 69% 39%);
+  --medium: hsl(48 100% 50%);
+  --hard: hsl(356 69% 61%);
+}
+
+.dark {
+  --background: hsl(0 0% 6%);
+  --foreground: hsl(0 0% 91%);
+  --card: hsl(0 0% 15%);
+  --card-foreground: hsl(0 0% 91%);
+  --popover: hsl(0 0% 15%);
+  --popover-foreground: hsl(0 0% 91%);
+  --primary: hsl(36 100% 54%);
+  --primary-foreground: hsl(0 0% 0%);
+  --secondary: hsl(0 0% 20%);
+  --secondary-foreground: hsl(0 0% 91%);
+  --muted: hsl(0 0% 25%);
+  --muted-foreground: hsl(0 0% 63%);
+  --accent: hsl(36 100% 54%);
+  --accent-foreground: hsl(0 0% 0%);
+  --destructive: hsl(356.3033 90.5579% 54.3137%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --border: hsl(0 0% 25%);
+  --input: hsl(0 0% 25%);
+  --ring: hsl(36 100% 54%);
+  --sidebar: hsl(0 0% 15%);
+  --sidebar-foreground: hsl(0 0% 91%);
+  --sidebar-primary: hsl(36 100% 54%);
+  --sidebar-primary-foreground: hsl(0 0% 0%);
+  --sidebar-accent: hsl(0 0% 20%);
+  --sidebar-accent-foreground: hsl(36 100% 54%);
+  --sidebar-border: hsl(0 0% 25%);
+  --sidebar-ring: hsl(36 100% 54%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+.difficulty-easy { 
+  color: var(--easy); 
+}
+
+.difficulty-medium { 
+  color: var(--medium); 
+}
+
+.difficulty-hard { 
+  color: var(--hard); 
+}
+
+.table-hover:hover {
+  background-color: hsl(0 0% 12%);
+}
+
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.skill-badge {
+  display: inline-block;
+  padding: 2px 6px;
+  background: hsl(0 0% 20%);
+  border: 1px solid hsl(0 0% 30%);
+  border-radius: 4px;
+  font-size: 10px;
+  margin: 1px;
+}
+
+.progress-bar {
+  height: 6px;
+  background: hsl(0 0% 25%);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transition: width 0.3s ease;
+}
