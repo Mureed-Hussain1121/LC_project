@@ -91,30 +91,42 @@ export default function Leaderboard() {
 
   const handleRefresh = async () => {
     try {
+      setLastUpdated("Refreshing...");
+      
       toast({
         title: "Refreshing data...",
         description: "This may take a few minutes to complete.",
       });
 
-      const response = await apiRequest("POST", "/api/full-refresh");
-      
+      const response = await fetch("/api/full-refresh", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
       if (response.ok) {
+        const result = await response.json();
+        console.log("Refresh result:", result);
+
         await refetchStudents();
         await refetchStatistics();
         setLastUpdated(new Date().toLocaleTimeString());
-        
+
         toast({
           title: "Data refreshed successfully!",
-          description: "All student and LeetCode data has been updated.",
+          description: `Students: ${result.students?.created || 0} created, ${result.students?.updated || 0} updated. Stats: ${result.stats?.success || 0} updated.`,
         });
       } else {
-        throw new Error("Failed to refresh data");
+        const errorText = await response.text();
+        throw new Error(`Server responded with ${response.status}: ${errorText}`);
       }
     } catch (error) {
       console.error("Refresh error:", error);
+      setLastUpdated("Error");
       toast({
         title: "Refresh failed",
-        description: "Unable to refresh data. Please try again later.",
+        description: error instanceof Error ? error.message : "Unable to refresh data. Please try again later.",
         variant: "destructive",
       });
     }
