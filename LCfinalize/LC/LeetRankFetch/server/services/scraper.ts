@@ -28,7 +28,7 @@ export class NEDUETScraper {
           name: "Minhal Rizvi",
           rollNo: "CY-017",
           batch: "2023",
-          program: "BS CS (CY)",
+          program: "BS CS (CY) lmnopqrst",
           skills: [],
           avatarUrl:
             "https://assets.leetcode.com/users/rminhal783/avatar_1710615368.png",
